@@ -19,6 +19,36 @@
             <div class="clear"></div>
         </div>
     </header>
+    <br />
+    <div class="main">
+        <div class="center">
+            <?php
+                if(!isset($_POST['etapa_2'])){
+            ?>
+            <form action="" method="post">
+                <select name="arquivo">
+                    <?php
+                        $files = glob("templates/*.html");
+                        foreach ($files as $key => $value){
+                            $files = explode('/', $value);
+                            $fileName = $files[count($files) -1];
+                            echo '<option value="'.$fileName.'">'.$fileName.'</option>';
+                        }
+                    ?>
+                </select>
+                <input type="text" name="nome_pagina" placeholder="Nome da sua página... ">
+                <input type="submit" name="etapa_2" value="Proxima Etapa!">
+            </form>
+            <?php } else { 
+                $nomeArquivo = $_POST['arquivo'];
+                $nomePagina = $_POST['nome_pagina'];
+
+                echo $nomeArquivo;
+                ?>
+
+            <?php } ?>
+        </div>
+    </div><!--main-->
 </body>
 
 </html>
