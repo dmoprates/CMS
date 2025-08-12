@@ -1,3 +1,5 @@
+<?php include('TemplateLeitor.php') ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -43,8 +45,22 @@
                 $nomeArquivo = $_POST['arquivo'];
                 $nomePagina = $_POST['nome_pagina'];
 
-                echo $nomeArquivo;
+                //pegamos os dados do arquivo e calculamos quantos campos tem para serem substituídos
+                $getContent = file_get_contents('templates/'.$nomeArquivo);
+                $fields = TemplateLeitor::pegaCampos($getContent,'\{\{!(.*?)\}\}');
                 ?>
+
+                <h2>Editando página <?php echo $nomePagina ?> | Arquivo Base: <?php echo $nomeArquivo ?> </h2>
+                <form method="post">
+                    <?php
+                        for($i = 0; $i < count($fields['chave']); $i++){
+                            echo '<input type="text" name="'.$fields['campo'].'" />';
+                            echo '<hr />';
+                        }
+                    ?>
+                    <input type="hidden" name="nome_pagina" value="<?php echo $nomePagina; ?>">
+                    <input type="submit" value="Salvar" name="acao">
+                </form>
 
             <?php } ?>
         </div>
