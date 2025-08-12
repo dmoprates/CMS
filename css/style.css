@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgb(225, 225, 225);
+}
+
+header {
+    background: #6c4e7b;
+    padding: 20px ;
+}
+.center{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2%;
+}
+
+.clear{
+    clear: both;
+}
+
+.logo{
+    float: left;
+}
+
+.logo a {
+    font-size: 23px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu{
+    float: right;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
